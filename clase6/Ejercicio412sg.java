@@ -30,8 +30,8 @@ public class Ejercicio412sg {
             default:
                 System.out.println("opcion no valida");
                 break;
+
         }
         sc.close();
     }
-    
-}
+}        
