@@ -3,7 +3,13 @@ package clase6;
 import java.util.Scanner;
 
 public class Ejercicio412sg {
+
+
+
+
     public static void main(String[] args) {
+
+
         
          Scanner sc = new Scanner(System.in);
 
@@ -33,5 +39,25 @@ public class Ejercicio412sg {
 
         }
         sc.close();
-    }
-}        
+    
+        /*
+
+
+                switch (seleccion){
+            
+                case 1 -> System.out.println("La suma es" + (num1+num2));
+                
+                case 2  ->   System.out.println("la multiplicacion es"+(num1*num2));
+                
+                case 3  ->   System.out.println("la division es"+(num1/num2));
+            
+                default  ->   System.out.println("opcion no valida");
+            
+                  */
+                    sc.close();
+                
+                
+                {
+
+                }
+            
