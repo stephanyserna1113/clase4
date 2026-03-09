@@ -13,15 +13,11 @@ public class Ejercicio412segun {
      num1 = sc.nextDouble();
      System.out.println("Digite numero 2");
      num2= sc.nextDouble();
-     System.out.println("Digite 1,2 o 3");
+     System.out.println("Digite 1, 2 o 3");
      seleccion=sc.nextInt();
 
      sc.close();
 
-    
-    
-    
-    
     
     
     }
