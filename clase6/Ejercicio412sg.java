@@ -2,7 +2,12 @@ package clase6;
 
 import java.util.Scanner;
 
-public class Ejercicio412sg {
+public class Ejercicio412sg{
+
+
+
+
+
 
 
 
@@ -59,5 +64,7 @@ public class Ejercicio412sg {
                 
                 {
 
-                }
+                
+                
+            }
             
