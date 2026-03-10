@@ -3,6 +3,9 @@ package clase6;
 import java.util.Scanner;
 
 public class Ejercicio412segun {
+    public static final Scanner sc = null;
+
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -21,7 +24,7 @@ public class Ejercicio412segun {
 
     
     {
-    
+
    sc.close();
    
 
