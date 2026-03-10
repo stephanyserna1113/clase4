@@ -22,7 +22,8 @@ public class Ejercicio412segun {
     
     {
     
-    sc.close();
+   sc.close();
+   
 
         
 
