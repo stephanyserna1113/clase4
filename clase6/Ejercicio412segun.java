@@ -16,16 +16,13 @@ public class Ejercicio412segun {
         System.out.println("Digite seleccion 1,2 o 3");
         seleccion = sc.nextInt();
 
-        
-
 
     }
 
     
-    
     {
     
-        sc.close();
+    sc.close();
 
         
 
