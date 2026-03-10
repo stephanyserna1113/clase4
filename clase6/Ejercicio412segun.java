@@ -9,7 +9,7 @@ public class Ejercicio412segun {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        double num1, num2;
+        double num1,num2;
         int seleccion;
 
         System.out.println("Digite numero 1");
