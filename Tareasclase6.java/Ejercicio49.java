@@ -1,6 +1,5 @@
-public class Ejercicio4.9switch {
-    
-}
+
+
 import java.util.Scanner;
 
 public class Ejercicio49 {
