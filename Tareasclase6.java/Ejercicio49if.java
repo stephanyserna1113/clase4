@@ -1,8 +1,8 @@
-public class Ejercicio4.9 {
-    
-}import java.util.Scanner;
 
-public class Ejercicio49 {
+    
+import java.util.Scanner;
+
+public class Ejercicio49if {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
