@@ -1,35 +1,49 @@
-package clase6;
-
 import java.util.Scanner;
 
-public class Ejercicio412segun {
-    public static final Scanner sc = null;
-
-
+public class Ejercicio412 {
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
 
-        double num1,num2;
-        int seleccion;
+        double num1, num2, resultado;
+        int codigo;
 
-        System.out.println("Digite numero 1");
+        System.out.print("Ingrese el primer numero: ");
         num1 = sc.nextDouble();
-        System.out.println("Digite numero 2");
+
+        System.out.print("Ingrese el segundo numero: ");
         num2 = sc.nextDouble();
-        System.out.println("Digite seleccion 1,2 o 3");
-        seleccion = sc.nextInt();
 
+        System.out.println("Ingrese el codigo de seleccion:");
+        System.out.println("1 = Sumar");
+        System.out.println("2 = Multiplicar");
+        System.out.println("3 = Dividir");
+        codigo = sc.nextInt();
 
+        switch (codigo) {
+            case 1:
+                resultado = num1 + num2;
+                System.out.println("Resultado de la suma: " + resultado);
+                break;
+
+            case 2:
+                resultado = num1 * num2;
+                System.out.println("Resultado de la multiplicacion: " + resultado);
+                break;
+
+            case 3:
+                if (num2 != 0) {
+                    resultado = num1 / num2;
+                    System.out.println("Resultado de la division: " + resultado);
+                } else {
+                    System.out.println("Error: no se puede dividir entre cero.");
+                }
+                break;
+
+            default:
+                System.out.println("Codigo no valido.");
+        }
+
+        sc.close();
     }
-
-    
-    {
-
-   sc.close();
-   
-
-        
-
-    }
-    
 }
