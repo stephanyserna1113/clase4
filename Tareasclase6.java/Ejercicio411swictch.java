@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Ejercicio411swictch {
     public static void main(String[] args) {
         
