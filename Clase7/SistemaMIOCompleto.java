@@ -1,7 +1,7 @@
 
 import java.util.Scanner;
 
-public class SistemaMIOCompleto {
+
 
     public static void main(String[] args) {
 
