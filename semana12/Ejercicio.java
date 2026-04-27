@@ -1,4 +1,5 @@
-package semana12;public class Estudiante {
+
+public class Estudiante {
     
     //Atributos
     private int identificacion;
@@ -39,8 +40,4 @@ package semana12;public class Estudiante {
         return notaFinal;
     }
 
-}
-
-public class Ejercicio {
-    
 }
