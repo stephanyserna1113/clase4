@@ -1,3 +1,4 @@
+package Clase12;
 public class OperacionesMatematicas {
     //Atributos
     private int a;

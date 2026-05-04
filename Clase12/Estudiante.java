@@ -1,4 +1,4 @@
-package clase12;
+package Clase12;
 
 public class Estudiante {
     
