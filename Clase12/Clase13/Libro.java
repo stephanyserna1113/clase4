@@ -18,6 +18,6 @@ public class Libro {
         return "Libro [titulo=" + titulo + ", autor=" + autor + ", paginas=" + paginas + "]";
     }
  
-}{
-
 }
+
+
