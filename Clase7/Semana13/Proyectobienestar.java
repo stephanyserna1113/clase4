@@ -1,4 +1,3 @@
-package Clase7.Semana13;
 
 public class Proyectobienestar {
 
@@ -70,11 +69,14 @@ class Estudiante implements Serializable {
 class Acividad(
 String nombre, Categoria cat,
 int cupo,
-boolean altoImpacto){
-        this.nombre=nombre; this.Categoria=cat;
-        this.cupoMaximo=cupo; this.esAltoImpacto=altoImpacto;
+boolean altoImpacto)
+{
+        this.nombre = nombre;
+        this.Categoria = cat;
+        this.cupoMaximo = cupo;
+        this.esAltoImpacto = altoImpacto;
 
-     }
+    }
 
     public boolean ValidarInscripcion(Estudiante e) {
         if (esAltoImpacto && e.getPromedio() < 4.0)
@@ -122,7 +124,7 @@ boolean altoImpacto){
                 }
 
         private void guardarDatos() {
-            try (ObjectOutputStream oos = new ObjectOutputStream(new fileOutputStream("sistema.dat"))) {
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("sistema.dat"))) {
                 oos.writeObject(this);
 
             } catch (IOException e) {
@@ -130,6 +132,6 @@ boolean altoImpacto){
             }
 
         }
-    }
+    
 
-}}
+
