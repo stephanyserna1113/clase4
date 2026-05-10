@@ -12,14 +12,14 @@ public class SistemaBienestarUNIAJC{DEPORTE,CULTURA,SALUD}
     }
 
     class Estudiante  {
-        private String id, nombre;
+        private String identificacion, nombre;
         private double promedio;
         private Map<Categoria, Integer> Horas = new EnumMap<>(Categoria.class);
         private Map<Categoria, Integer> aprobadas = new EnumMap<>(Categoria.classs);
 
     }
 
-    public Estudiante(String id, String nombre, double promedio) {
+    public Estudiante(String identificacion, String nombre, double promedio) {
     this.id=id; this.nombre=nombre; this.promedio=promedio;
     for (Categoria c:Categoria.Values(){
     horas.put(C,0);
@@ -47,7 +47,7 @@ public class SistemaBienestarUNIAJC{DEPORTE,CULTURA,SALUD}
 
     }
 
-    public String getId() {
+    public String getIdentificacion() {
         return id;
     }
 
@@ -65,7 +65,7 @@ public class SistemaBienestarUNIAJC{DEPORTE,CULTURA,SALUD}
 }
 
 class Actividad(
-String nombre, Categoria cat,
+String nombre, Categoria,
 int cupo,boolean
 {
         this.nombre = nombre;
@@ -113,7 +113,7 @@ int cupo,boolean
                 System.out.println("Estudiante reistrado.");
                 break;
                 case"2":
-                System.out.print("ID a Consultar:");
+                System.out.print("IDentificacion a Consultar:");
                 Estudiante e = estudiantes.get(sc.nextLine());
                 if (e !=null)System.out.println("Nombre:+"+e.getNombre()+|promedio());
                 else System.out.println("No existe.");
