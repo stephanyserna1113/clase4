@@ -3,27 +3,28 @@ package Clase14;
 import java.util.*;
 
 class Estudiante {
-    private String codigo;
+    private String id;
     private String nombre;
-    private double promedio;
+    private double promedioAcademico;
+    private Map<String, Integer> horasAcumuladas = new HashMap<>();
+    private Map<String, Integer> contadorCiclo = new HashMap<>();
+    private List<Inscripcion> inscripcionesActivas = new ArrayList<>();
+    private int penalizaciones = 0;
 
-    private int horasDeporte;
-    private int horasCultura;
-    private int horasSalud;
-
-    private int totalHoras;
-
-    private List<Inscripcion> inscripciones;
-
-    public Estudiante(String codigo, String nombre, double promedio) {
-        this.codigo = codigo;
+    public Estudiante(String id, String nombre, double promedio) {
+        this.id = id;
         this.nombre = nombre;
-        this.promedio = promedio;
-        this.inscripciones = new ArrayList<>();
+        this.promedioAcademico = promedio;
+        horasAcumuladas.put("Deporte", 0);
+        horasAcumuladas.put("Cultura", 0);
+        horasAcumuladas.put("Salud", 0);
+        contadorCiclo.put("Deporte", 0);
+        contadorCiclo.put("Cultura", 0);
+        contadorCiclo.put("Salud", 0);
     }
 
     public String getCodigo() {
-        return codigo;
+        return id;
     }
 
     public String getNombre() {
@@ -31,100 +32,92 @@ class Estudiante {
     }
 
     public double getPromedio() {
-        return promedio;
+        return promedioAcademico;
+    }
+
+    public double getPromedioAcademico() {
+        return promedioAcademico;
     }
 
     public int getHorasDeporte() {
-        return horasDeporte;
+        return horasAcumuladas.get("Deporte");
     }
 
     public int getHorasCultura() {
-        return horasCultura;
+        return horasAcumuladas.get("Cultura");
     }
 
     public int getHorasSalud() {
-        return horasSalud;
+        return horasAcumuladas.get("Salud");
     }
 
     public int getTotalHoras() {
-        return totalHoras;
+        return horasAcumuladas.values().stream().mapToInt(i -> i).sum() - penalizaciones;
     }
 
     public List<Inscripcion> getInscripciones() {
-        return inscripciones;
+        return inscripcionesActivas;
     }
 
     public void agregarHoras(String categoria, int horas) {
-        totalHoras += horas;
-
-        switch (categoria.toLowerCase()) {
-            case "deporte":
-                horasDeporte += horas;
-                break;
-            case "cultura":
-                horasCultura += horas;
-                break;
-            case "salud":
-                horasSalud += horas;
-                break;
+        horasAcumuladas.put(categoria, horasAcumuladas.get(categoria) + horas);
+        contadorCiclo.put(categoria, contadorCiclo.get(categoria) + 1);
+        if (contadorCiclo.get(categoria) == 3) {
+            horasAcumuladas.put(categoria, horasAcumuladas.get(categoria) + 5);
+            contadorCiclo.put(categoria, 0);
+            System.out.println("¡Bono UNIAJC aplicado! +5 horas en " + categoria);
         }
     }
 
     public void restarHoras(int horas) {
-        totalHoras -= horas;
-
-        if (totalHoras < 0) {
-            totalHoras = 0;
-        }
+        penalizaciones += horas;
     }
 
     public boolean cumpleCategorias() {
-        return horasDeporte >= 10 && horasCultura >= 10 && horasSalud >= 10;
+        return horasAcumuladas.get("Deporte") >= 10 && horasAcumuladas.get("Cultura") >= 10
+                && horasAcumuladas.get("Salud") >= 10;
     }
 
     public void agregarInscripcion(Inscripcion i) {
-        inscripciones.add(i);
+        inscripcionesActivas.add(i);
     }
 
     public boolean tieneCruceHorario(Actividad nueva) {
-        for (Inscripcion i : inscripciones) {
-            if (i.isActiva()) {
-                Actividad a = i.getActividad();
-
-                if (a.getHorario().equalsIgnoreCase(nueva.getHorario())) {
-                    return true;
-                }
+        for (Inscripcion inscripcion : inscripcionesActivas) {
+            if (inscripcion.getActividad().getHorario().equals(nueva.getHorario())) {
+                return true;
             }
         }
-
         return false;
     }
 
     public int contarActividadesCategoria(String categoria) {
         int contador = 0;
-
-        for (Inscripcion i : inscripciones) {
-            if (i.isActiva() && i.getActividad().getCategoria().equalsIgnoreCase(categoria)) {
+        for (Inscripcion inscripcion : inscripcionesActivas) {
+            if (inscripcion.getActividad().getCategoria().equalsIgnoreCase(categoria)) {
                 contador++;
             }
         }
-
         return contador;
     }
 
     public boolean esAptoGrado() {
-        return totalHoras >= 30 && cumpleCategorias();
+        return getTotalHoras() >= 30 && cumpleCategorias();
+    }
+
+    public int getHorasPorCategoria(String cat) {
+        return horasAcumuladas.get(cat);
     }
 
     public void mostrarInformacion() {
         System.out.println("\n===== INFORMACIÓN DEL ESTUDIANTE =====");
-        System.out.println("Código: " + codigo);
+        System.out.println("Código: " + id);
         System.out.println("Nombre: " + nombre);
-        System.out.println("Promedio: " + promedio);
-        System.out.println("Horas deporte: " + horasDeporte);
-        System.out.println("Horas cultura: " + horasCultura);
-        System.out.println("Horas salud: " + horasSalud);
-        System.out.println("Total horas: " + totalHoras);
+        System.out.println("Promedio: " + promedioAcademico);
+        System.out.println("Horas deporte: " + getHorasDeporte());
+        System.out.println("Horas cultura: " + getHorasCultura());
+        System.out.println("Horas salud: " + getHorasSalud());
+        System.out.println("Total horas: " + getTotalHoras());
         System.out.println("Cumple categorías: " + (cumpleCategorias() ? "Sí" : "No"));
         System.out.println("Apto para grado: " + (esAptoGrado() ? "Sí" : "No"));
     }
@@ -144,7 +137,7 @@ class Actividad {
     private List<Integer> calificaciones;
 
     public Actividad(int id, String nombre, String categoria, int horas,
-                     int cupoMaximo, String horario, boolean altoImpacto) {
+            int cupoMaximo, String horario, boolean altoImpacto) {
 
         this.id = id;
         this.nombre = nombre;
@@ -266,7 +259,7 @@ class Inscripcion {
     }
 }
 
-public class BienestarUNIAJC {
+public class SistemaBienestarUNIAJC {
 
     static Scanner sc = new Scanner(System.in);
 
@@ -330,9 +323,9 @@ public class BienestarUNIAJC {
 
     public static void cargarDatos() {
 
-        estudiantes.add(new Estudiante("1001", "Juan Pérez", 4.5));
-        estudiantes.add(new Estudiante("1002", "Laura Gómez", 3.7));
-        estudiantes.add(new Estudiante("1003", "Camilo Torres", 4.2));
+        estudiantes.add(new Estudiante("1001", "Danna Velasco", 4.8));
+        estudiantes.add(new Estudiante("1002", "Francia Serna", 3.9));
+        estudiantes.add(new Estudiante("1003", "Stephanya serna", 5.0));
 
         actividades.add(new Actividad(1, "Fútbol", "Deporte", 5, 2,
                 "Lunes 8AM", false));
@@ -340,10 +333,10 @@ public class BienestarUNIAJC {
         actividades.add(new Actividad(2, "Danza", "Cultura", 5, 2,
                 "Martes 10AM", false));
 
-        actividades.add(new Actividad(3, "Yoga", "Salud", 5, 1,
+        actividades.add(new Actividad(3, "origami", "Salud", 5, 1,
                 "Lunes 8AM", false));
 
-        actividades.add(new Actividad(4, "Viaje Cultural", "Cultura", 10,
+        actividades.add(new Actividad(4, "ajedrez", "Cultura", 10,
                 1, "Viernes 7AM", true));
     }
 
@@ -532,5 +525,3 @@ public class BienestarUNIAJC {
                 (e.esAptoGrado() ? "APTO PARA GRADO" : "NO APTO"));
     }
 }
-
-
