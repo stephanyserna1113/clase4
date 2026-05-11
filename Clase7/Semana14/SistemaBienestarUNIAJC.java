@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-// Clase para representar al Estudiante
 class Estudiante {
 
     private String codigo;
@@ -171,9 +170,8 @@ public class SistemaBienestarUNIAJC {
                 entrada.next();
             }
             opcion = entrada.nextInt();
-            entrada.nextLine(); // Limpiar el texto
+            entrada.nextLine();
 
-            // Ejecutar lo que el usuario eligió
             switch (opcion) {
                 case 1:
                     mostrarEstudiantes();
@@ -241,7 +239,7 @@ public class SistemaBienestarUNIAJC {
 
     public static int buscarActividad(int id) {
         for (int i = 0; i < 4; i++) {
-            // 🔑 Usamos getId() porque el atributo es privado
+
             if (listaActividades[i].getId() == id) {
                 return i;
             }
