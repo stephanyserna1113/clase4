@@ -200,7 +200,7 @@ public class SistemaBienestarUNIAJC {
     public static void cargarDatosIniciales() {
 
         listaEstudiantes[0] = new Estudiante("1001", "Danna Velasco", 4.8);
-        listaEstudiantes[1] = new Estudiante("1002", "Francia Serna", 3.9);
+        listaEstudiantes[1] = new Estudiante("1002", "Elkin Velasco", 3.9);
         listaEstudiantes[2] = new Estudiante("1003", "Stephanya Serna", 5.0);
 
         listaActividades[0] = new Actividad(1, "Fútbol", "Deporte", 5, 2, "Lunes 8AM");
